@@ -16,3 +16,35 @@ profile ADMIN;
 GRANT ALL PRIVILEGES TO DAVIDCORREA;
 
 ----------------------------------------------------
+CREATE OR REPLACE FUNCTION OCURRENCIA_PAR (num_in in integer, num_in_2 in string) 
+RETURN string AS
+   counter_to_num number:=8;
+   counter_of_matches number :=0;
+   message string(100);
+   message2 string(100);
+   ingreso number:=0;
+BEGIN
+WHILE counter_to_num<=num_in
+LOOP  
+   ingreso := 8521478962; 
+   message2 := ingreso; 
+   message := message || ingreso||', '; 
+   if (INSTR(message2, num_in_2))>0 then 
+      counter_of_matches := counter_of_matches + 1; 
+   counter_to_num := counter_to_num+1; 
+END LOOP;
+   DBMS_OUTPUT.PUT_LINE(counter_of_matches);
+   return message;
+END;
+
+message := message || ingreso||', '; 
+
+
+
+------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW HUECOS_PENDIENTES_Y_ESTUDIO AS
+ (SELECT CANTIDAD_HUECOS,APELLIDOS,CODIGO_INTERNO)
+ FROM gdb.ENCARGADOS 
+ ;
+
